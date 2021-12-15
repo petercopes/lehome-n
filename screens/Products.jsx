@@ -11,8 +11,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
     height: Dimensions.get("window").height,
-    margin: 20,
+    padding: 20,
   },
 });
 const itemList = [

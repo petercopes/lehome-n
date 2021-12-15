@@ -15,8 +15,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { setStatusBarBackgroundColor } from "expo-status-bar";
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "white",
     height: Dimensions.get("window").height,
-    margin: 20,
+    padding: 20,
     alignItems: "center",
   },
   mainImage: {

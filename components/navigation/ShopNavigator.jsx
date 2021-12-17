@@ -4,21 +4,21 @@ import { NavigationContainer } from "@react-navigation/native";
 import Home from "../../screens/Home";
 import Products from "../../screens/Products";
 import Header from "../UI/Header";
+import ProductDetail from "../../screens/ProductDetail";
 
 const Stack = createNativeStackNavigator();
-const ShopNavigator = () => {
+const ShopNavigator = ({ navigation }) => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="Home"
-        screenOptions={{
-          header: (props) => <Header {...props} />,
-        }}
-      >
-        <Stack.Screen name="home" component={Home} />
-        <Stack.Screen name="products" component={Products} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        header: (props) => <Header {...props} />,
+      }}
+    >
+      <Stack.Screen name="home" component={Home} />
+      <Stack.Screen name="products" component={Products} />
+      <Stack.Screen name="productDetail" component={ProductDetail} />
+    </Stack.Navigator>
   );
 };
 export default ShopNavigator;

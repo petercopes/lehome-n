@@ -12,6 +12,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
+  area: {
+    backgroundColor: "white",
+  },
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -42,7 +45,7 @@ const Header = ({ navigation, route }) => {
     </TouchableOpacity>
   );
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.area}>
       <View style={styles.container}>
         <TouchableWithoutFeedback
           onPress={() => () => navigation.navigate("home")}

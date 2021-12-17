@@ -1,12 +1,8 @@
-import { NavigationContainer } from "@react-navigation/native";
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
-import React, { useState } from "react";
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
-import ShopNavigator from "./components/navigation/ShopNavigator";
-import Header from "./components/UI/Header";
-import Home from "./screens/Home";
-import Products from "./screens/Products";
+import React from "react";
+import { StyleSheet } from "react-native";
+import MainNavigator from "./components/navigation";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -15,7 +11,7 @@ export default function App() {
     MontSerratThin: require("./assets/fonts/montserrat/Montserrat-Thin.ttf"),
   });
 
-  return loaded ? <ShopNavigator /> : <AppLoading />;
+  return loaded ? <MainNavigator /> : <AppLoading />;
 }
 
 const styles = StyleSheet.create({
@@ -25,6 +21,6 @@ const styles = StyleSheet.create({
     backgroundColor: "green",
     alignItems: "center",
     justifyContent: "center",
-    fontFamily: "MontSerratThin",
+    fontFamily: "MontSerratBold",
   },
 });

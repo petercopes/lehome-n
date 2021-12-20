@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: "center",
     marginTop: 20,
+    fontFamily: "Font-Light",
   },
   imageContainer: {
     flexDirection: "row",

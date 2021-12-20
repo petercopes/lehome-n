@@ -1,37 +1,47 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import FastImage from "react-native-fast-image";
+import images from "../images";
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 15,
-    margin: "10%",
     maxHeight: 500,
     alignItems: "center",
   },
   image: {
     marginTop: 10,
-    borderTopStartRadius: 15,
-    borderTopEndRadius: 15,
-    maxWidth: "90%",
-    margin: 5,
+    maxWidth: "95%",
+
     maxHeight: "80%",
   },
   info: {
     width: "100%",
-    alignItems: "center",
-    padding: 10,
+    alignItems: "stretch",
+    paddingTop: 10,
+    paddingHorizontal: 10,
     flexDirection: "row",
-    justifyContent: "space-around",
-    fontFamily: "MontSerrat-Bold",
+    justifyContent: "space-between",
+  },
+  text: {
+    fontFamily: "Font-Bold",
+    fontSize: 20,
+  },
+  new: {
+    paddingTop: 10,
+    paddingLeft: 10,
+    alignSelf: "flex-start",
+    fontFamily: "Font-ExtraBold",
   },
 });
-const ProductItem = ({ product, navigation }) => {
+const ProductItem = ({ product }) => {
+  console.log(product.imgsrc);
+
   return (
     <View style={styles.container}>
-      <Image source={product.image} style={styles.image} />
+      <Image source={images.pant1} style={styles.image} />
+      {product.new && <Text style={styles.new}>NEW!</Text>}
       <View style={styles.info}>
-        <Text>{product.name}</Text>
-        <Text>${product.price}</Text>
+        <Text style={styles.text}>{product.name}</Text>
+        <Text style={styles.text}>${product.price}</Text>
       </View>
     </View>
   );

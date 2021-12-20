@@ -9,8 +9,15 @@ const CartNavigator = () => {
     <Stack.Navigator
       initialRouteName="Cart"
       screenOptions={{
-        headerShown: false,
+        headerShown: true,
+        headerTitleStyle: {
+          fontFamily: "Font-Regular",
+          fontSize: 25,
+          padding: 5,
+          color: "black",
+        },
         tabBarShowLabel: false,
+        title: "Your Cart",
       }}
     >
       <Stack.Screen name="Cart" component={Cart} />

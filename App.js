@@ -1,26 +1,27 @@
 import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import React from "react";
-import { StyleSheet } from "react-native";
+import store from "./store/index";
+import { Provider } from "react-redux";
 import MainNavigator from "./components/navigation";
 
 export default function App() {
-  const [loaded] = useFonts({
-    MontSerrat: require("./assets/fonts/montserrat/Montserrat-Regular.ttf"),
-    MontSerratBold: require("./assets/fonts/montserrat/Montserrat-Bold.ttf"),
-    MontSerratThin: require("./assets/fonts/montserrat/Montserrat-Thin.ttf"),
+  let [loaded] = useFonts({
+    "Font-Regular": require("./assets/fonts/montserrat/Montserrat-Regular.ttf"),
+    "Font-Bold": require("./assets/fonts/montserrat/Montserrat-Bold.ttf"),
+    "Font-Thin": require("./assets/fonts/montserrat/Montserrat-Thin.ttf"),
+    "Font-Light": require("./assets/fonts/montserrat/Montserrat-Light.ttf"),
+    "Font-Medium": require("./assets/fonts/montserrat/Montserrat-Medium.ttf"),
+    "Font-SemiBold": require("./assets/fonts/montserrat/Montserrat-SemiBold.ttf"),
+    "Font-Black": require("./assets/fonts/montserrat/Montserrat-Black.ttf"),
+    "Font-ExtraBold": require("./assets/fonts/montserrat/Montserrat-ExtraBold.ttf"),
   });
 
-  return loaded ? <MainNavigator /> : <AppLoading />;
+  return loaded ? (
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
+  ) : (
+    <AppLoading />
+  );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 20,
-    flex: 1,
-    backgroundColor: "green",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: "MontSerratBold",
-  },
-});

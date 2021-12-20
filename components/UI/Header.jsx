@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   title: {
-    fontSize: 30,
+    fontSize: 35,
+    fontFamily: "Font-Light",
   },
 });
 

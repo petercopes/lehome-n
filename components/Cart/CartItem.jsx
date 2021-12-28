@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import images from "../images";
 import { useDispatch } from "react-redux";
 import { CartActions } from "../../store/cart-slice";
 import { Ionicons } from "@expo/vector-icons";

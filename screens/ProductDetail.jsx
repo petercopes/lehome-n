@@ -9,20 +9,19 @@ import {
   SafeAreaView,
   Pressable,
   Modal,
+  ScrollViewBase,
+  Dimensions,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
-import images from "../components/images";
 import { CartActions } from "../store/cart-slice";
 import { useDispatch } from "react-redux";
+const screenHeight = Dimensions.get("window").height;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     width: "100%",
     height: "100%",
     backgroundColor: "white",
+    flexGrow: 1,
   },
   centeredView: {
     flex: 1,
@@ -31,18 +30,23 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   sectionOne: {
+    flexGrow: 1,
     width: "100%",
+    height: "100%",
     justifyContent: "center",
     alignItems: "center",
   },
   sectionTwo: {
     width: "100%",
+    height: "100%",
+
     padding: 10,
   },
   image: {
     marginTop: 10,
     maxWidth: "95%",
     height: "80%",
+    width: "95%",
     maxHeight: "80%",
   },
   info: {
@@ -124,59 +128,69 @@ const ProductDetail = ({ route }) => {
     }
   };
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible);
-        }}
+    <View style={{ flex: 1, height: screenHeight }}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        nestedScrollEnabled={true}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Ionicons
-              name="close-outline"
-              onPress={() => setModalVisible(!modalVisible)}
-              size={32}
-              color={"black"}
-            />
-            <Text style={styles.modalText}>Seleccione un talle</Text>
-          </View>
-        </View>
-      </Modal>
-      <View style={styles.sectionOne}>
-        <Image source={images.pant1} style={styles.image} />
-        {product.new && <Text style={styles.new}>NEW!</Text>}
-        <View style={styles.info}>
-          <View>
-            <Text style={styles.text}>{product.name}</Text>
-            <Text style={styles.text}>${product.price}</Text>
-          </View>
-          <TouchableOpacity onPress={addToCartHandler}>
-            <View style={styles.addButton}>
-              <Text style={styles.buttonText}>Add to Cart</Text>
+        <Modal
+          animationType="fade"
+          transparent={true}
+          visible={modalVisible}
+          onRequestClose={() => {
+            setModalVisible(!modalVisible);
+          }}
+        >
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Ionicons
+                name="close-outline"
+                onPress={() => setModalVisible(!modalVisible)}
+                size={32}
+                color={"black"}
+              />
+              <Text style={styles.modalText}>Seleccione un talle</Text>
             </View>
-          </TouchableOpacity>
+          </View>
+        </Modal>
+        <View style={styles.sectionOne}>
+          <Image
+            source={{
+              uri: product.imgsrc,
+            }}
+            style={styles.image}
+          />
+          {product.new && <Text style={styles.new}>NEW!</Text>}
+          <View style={styles.info}>
+            <View>
+              <Text style={styles.text}>{product.name}</Text>
+              <Text style={styles.text}>${product.price}</Text>
+            </View>
+            <TouchableOpacity onPress={addToCartHandler}>
+              <View style={styles.addButton}>
+                <Text style={styles.buttonText}>Add to Cart</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-      <View style={styles.sectionTwo}>
-        <Text style={styles.descriptionText}>
-          {product.description.toUpperCase()}
-        </Text>
-        <View style={styles.sizes}>
-          <TouchableOpacity onPress={() => setSelectedSize("S")}>
-            <Text style={styles.text}>S</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setSelectedSize("M")}>
-            <Text style={styles.text}>M</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setSelectedSize("L")}>
-            <Text style={styles.text}>L</Text>
-          </TouchableOpacity>
+        <View style={styles.sectionTwo}>
+          <Text style={styles.descriptionText}>
+            {product.description.toUpperCase()}
+          </Text>
+          <View style={styles.sizes}>
+            <TouchableOpacity onPress={() => setSelectedSize("S")}>
+              <Text style={styles.text}>S</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setSelectedSize("M")}>
+              <Text style={styles.text}>M</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setSelectedSize("L")}>
+              <Text style={styles.text}>L</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 export default ProductDetail;

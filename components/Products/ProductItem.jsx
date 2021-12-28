@@ -1,17 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import FastImage from "react-native-fast-image";
-import images from "../images";
 const styles = StyleSheet.create({
   container: {
-    maxHeight: 500,
+    marginBottom: 30,
     alignItems: "center",
+    height: 600,
+    maxHeight: "100%",
   },
   image: {
-    marginTop: 10,
-    maxWidth: "95%",
-
-    maxHeight: "80%",
+    marginTop: 20,
+    width: "95%",
+    height: "90%",
   },
   info: {
     width: "100%",
@@ -34,10 +33,9 @@ const styles = StyleSheet.create({
 });
 const ProductItem = ({ product }) => {
   console.log(product.imgsrc);
-
   return (
     <View style={styles.container}>
-      <Image source={images.pant1} style={styles.image} />
+      <Image source={{ uri: product.imgsrc }} style={styles.image} />
       {product.new && <Text style={styles.new}>NEW!</Text>}
       <View style={styles.info}>
         <Text style={styles.text}>{product.name}</Text>

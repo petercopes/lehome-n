@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 const ShopNavigator = ({ navigation }) => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="home"
       screenOptions={{
         header: (props) => <Header {...props} />,
       }}

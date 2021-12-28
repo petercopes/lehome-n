@@ -11,7 +11,13 @@ import {
   where,
   documentId,
 } from "firebase/firestore/lite";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 // TODO: Replace the following with your app's Firebase project configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyC_8GSJunZUjDbhyJ8YGBkujy9tKsLgssw",
   authDomain: "lehomme-react.firebaseapp.com",
@@ -42,6 +48,32 @@ export async function fetchProduct(id) {
     id: productSnapshot.id,
   };
   return product;
+}
+export async function signUpUserinDB(email, password) {
+  const auth = getAuth();
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    return userCredential;
+  } catch (error) {
+    return error;
+  }
+}
+export async function verifyUserInDB(email, password) {
+  const auth = getAuth(app);
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    return userCredential;
+  } catch (error) {
+    return error;
+  }
 }
 export async function postOrder(order, cart) {
   const batch = writeBatch(db);

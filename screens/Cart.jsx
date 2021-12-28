@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 });
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+
   console.log(cartItems);
   return (
     <SafeAreaView style={styles.container}>

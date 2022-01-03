@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ShopNavigator from "./ShopNavigator";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CartNavigator from "./CartNavigator";

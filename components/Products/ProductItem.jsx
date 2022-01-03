@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
   },
 });
 const ProductItem = ({ product }) => {
-  console.log(product.imgsrc);
   return (
     <View style={styles.container}>
       <Image source={{ uri: product.imgsrc }} style={styles.image} />

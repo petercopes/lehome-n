@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, Button } from "react-native";
 import { useDispatch } from "react-redux";
 import { CartActions } from "../../store/cart-slice";
 import { Ionicons } from "@expo/vector-icons";
@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
   },
   image: {
     marginTop: 10,
-    maxWidth: 50,
-    maxHeight: 75,
+    width: 50,
+    height: 75,
   },
   info: {
     alignItems: "stretch",
@@ -54,10 +54,41 @@ const CartItem = ({ product }) => {
     <View style={styles.shadowContainer}>
       <View style={styles.container}>
         <View style={styles.productContainer}>
-          <Image source={images.pant1} style={styles.image} />
+          <Image source={{ uri: product.imgsrc }} style={styles.image} />
           <View style={styles.info}>
             <Text style={styles.text}>{product.name}</Text>
             <Text style={styles.text}>${product.price}</Text>
+            <View style={{ flexDirection: "row", backgroundColor: "white" }}>
+              <Ionicons
+                name="add-outline"
+                onPress={() => {
+                  dispatch(
+                    CartActions.updateAmountOnCart({
+                      ...product,
+                      amount: product.amount + 1,
+                    })
+                  );
+                }}
+                size={12}
+                color={"black"}
+              />
+              <Text style={styles.text}>{product.amount}</Text>
+              <Ionicons
+                name="remove-outline"
+                onPress={() => {
+                  if (product.amount > 1) {
+                    dispatch(
+                      CartActions.updateAmountOnCart({
+                        ...product,
+                        amount: product.amount - 1,
+                      })
+                    );
+                  }
+                }}
+                size={12}
+                color={"black"}
+              />
+            </View>
           </View>
         </View>
         <Ionicons

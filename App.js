@@ -2,9 +2,11 @@ import AppLoading from "expo-app-loading";
 import { useFonts } from "expo-font";
 import React from "react";
 import store from "./store/index";
+import { persistor } from "./store/index";
 import { Provider } from "react-redux";
 import MainNavigator from "./components/navigation";
-
+import { PersistGate } from "redux-persist/integration/react";
+import { StatusBar } from "expo-status-bar";
 export default function App() {
   let [loaded] = useFonts({
     "Font-Regular": require("./assets/fonts/montserrat/Montserrat-Regular.ttf"),
@@ -19,7 +21,10 @@ export default function App() {
 
   return loaded ? (
     <Provider store={store}>
-      <MainNavigator />
+      <PersistGate loading={null} persistor={persistor}>
+        <StatusBar barStyle="light-content" />
+        <MainNavigator />
+      </PersistGate>
     </Provider>
   ) : (
     <AppLoading />

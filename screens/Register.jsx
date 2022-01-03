@@ -1,11 +1,9 @@
 import React from "react";
 
-import { useDispatch } from "react-redux";
 import { signUpUser } from "../store/actions";
 import SignForm from "../components/profile/SignForm";
 
 const Register = ({ navigation }) => {
-  const dispatch = useDispatch();
   return (
     <SignForm
       navigation={navigation}

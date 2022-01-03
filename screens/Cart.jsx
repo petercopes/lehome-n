@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   View,
   StyleSheet,
   Text,
-  Image,
   Dimensions,
   TouchableOpacity,
   SafeAreaView,
   FlatList,
 } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
 import { useSelector } from "react-redux";
 import CartItem from "../components/Cart/CartItem";
 const styles = StyleSheet.create({
@@ -35,11 +32,17 @@ const styles = StyleSheet.create({
     width: "100%",
     marginVertical: 20,
   },
+  empty: {
+    fontSize: 30,
+    fontFamily: "Font-Light",
+    alignSelf: "center",
+    position: "absolute",
+    top: Dimensions.get("window").height / 2 - 100,
+  },
 });
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
 
-  console.log(cartItems);
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -56,7 +59,7 @@ const Cart = () => {
             )}
           />
         ) : (
-          <Text>Your cart is empty</Text>
+          <Text style={styles.empty}>Your cart is empty</Text>
         )}
       </View>
     </SafeAreaView>

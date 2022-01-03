@@ -36,7 +36,6 @@ export async function fetchProducts() {
     ...doc.data(),
     id: doc.id,
   }));
-  console.log("productList");
   return productList;
 }
 export async function fetchProduct(id) {

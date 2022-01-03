@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
-  TouchableHighlight,
   TouchableOpacity,
   SafeAreaView,
 } from "react-native";

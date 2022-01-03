@@ -4,15 +4,10 @@ import {
   StyleSheet,
   Text,
   Image,
-  Button,
-  ImageBackgroundBase,
-  TouchableHighlight,
-  TouchableHighlightComponent,
   Dimensions,
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",

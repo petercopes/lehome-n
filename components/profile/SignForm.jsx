@@ -121,7 +121,6 @@ const SignForm = ({
                 validateOnChange={false}
                 validateOnBlur={true}
                 onSubmit={(values) => {
-                  console.log(values);
                   dispatch(signHandler(values.email, values.password));
                 }}
               >
